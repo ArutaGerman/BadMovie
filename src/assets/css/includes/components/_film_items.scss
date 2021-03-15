@@ -1,0 +1,14 @@
+.main-film {
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+
+  .main-film__data_wrap div {
+    margin-top: 0.5rem;
+
+    .film__overview {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
