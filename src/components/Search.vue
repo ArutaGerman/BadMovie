@@ -1,10 +1,13 @@
 <template>
-  <div class="container">
-    <div class="row search">
+  <div class="container search">
+    <span class="search-description">Выберите тип фильма, потом год премьеры</span>
+    <div class="row search-row">
+      <div>
+         </div>
       <div
         v-for="(item, idx) in genre"
         :key="idx"
-        class="search-params_type col-6  col-sm-4"
+        class="search-params col-6  col-md-4"
       >
         <input
           :id="item.genreType"
@@ -16,7 +19,7 @@
         />
         <label :for="item.genreType">{{ item.value }}</label>
       </div>
-      <div class="search-date_wrap col-12  col-sm-4">
+      <div class="search-params col-12  col-md-4">
         <div class="search-date_inner">
           <label for="year">Премьера: </label>
           <select
@@ -42,7 +45,7 @@ export default {
       date: 1900,
       baseYear: [],
       picked: null,
-      currentYear: null,
+      currentYear: "",
       genre: [
         {
           genreType: "movie",
@@ -87,34 +90,43 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 @import "../assets/css/_mixins_style";
-.search {
+.search{
+  text-align: center;
+  &-description{
+    font-size: 0.75rem;
+    @include resolve(md){
+      font-size: 1rem;
+    }
+  }
+
+&-row {
   font-size: 1.25rem;
+  padding: 0.5rem 0 0 0;
+  @include resolve(md){
   padding: 1.5rem 0;
+  }
 
-  &-params_type,
-  &-date_inner {
-    text-align: center;
-    @include resolve(xs) {
-      text-align: left;
-    }
-    @include resolve(md) {
-      text-align: center;
-    }
-
-    label {
-      padding-right: 0.5rem;
+  .search-date_inner {
+  label{
+    padding-right: 0.25rem;
+    @include resolve(md){
+      padding-right: 0.5rem
     }
   }
-  &-params_type {
+  }
+  .search-params {
+    @include resolve(md){
     margin-top: 1rem;
-    order: 1;
-    @include resolve(xs) {
-      order: 0;
-      margin-top: 0;
     }
+  
+  > label {
+    padding-left: 0.25rem;
+    @include resolve(md){
+      padding-left: 1rem;
+    }
+    
   }
-  &-params_type > label {
-    padding-left: 1rem;
   }
+}
 }
 </style>

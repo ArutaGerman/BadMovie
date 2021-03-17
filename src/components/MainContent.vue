@@ -31,21 +31,21 @@ export default {
       const changeKey = (array) => {
         //Оставляем только 10 фильмов/сериалов, т.к. сервис - топ 10
         array = array.splice(0, 10);
-        for (let i in array) {
+        for (let key of array) {
           //Если в массиве содержится ключ first_air_date, то это сериал и выполняем для него действия
-          if ("first_air_date" in array[i]) {
+          if ("first_air_date" in key) {
             //Переименовываем ключ даты релиза сериала
-            array[i].release_date = array[i].first_air_date;
+            key.release_date = key.first_air_date;
             //Если ключ названия сериала пустой, то присваиваем значение оригинального названия на родном языке
-            if (array[i].name === null) {
-              array[i].title = array[i].original_name;
+            if (key.name === null) {
+              key.title = key.original_name;
             } else {
-              array[i].title = array[i].name;
+              key.title = key.name;
             }
             //удялем измененные ключи, т.к. вместо них теперь выборка идет по новым ключам
-            delete array[i].name;
-            delete array[i].original_name;
-            delete array[i].first_air_date;
+            delete key.name;
+            delete key.original_name;
+            delete key.first_air_date;
           }
         }
         this.films = array;

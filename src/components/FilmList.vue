@@ -94,8 +94,7 @@ export default {
     }
 
     img {
-      height: inherit;
-      width: inherit;
+      height: 100%
     }
   }
 
