@@ -6,17 +6,15 @@
 
 <script>
 export default {
-  props:["index"],
+  props: ["index"],
   data() {
-    return {
-      
-    };
+    return {};
   },
   methods: {
-      chooseFilm(index){
-      this.$emit('select-index', index)
-      }
-  },
+    chooseFilm(index) {
+      this.$emit("select-index", index);
+    }
+  }
 };
 </script>
 

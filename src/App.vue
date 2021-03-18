@@ -22,14 +22,14 @@ export default {
       id: null,
       picked: null,
       baseFilms: [],
-      image: "",
+      image: ""
     };
   },
   components: {
-    Header: ()=> import("./components/Header"),
-    MainContent: ()=> import("./components/MainContent"),
-    Details: ()=> import("./components/Details"),
-    ReturnBtn: ()=> import("./components/buttons/ReturnBtn"),
+    Header: () => import("./components/Header"),
+    MainContent: () => import("./components/MainContent"),
+    Details: () => import("./components/Details"),
+    ReturnBtn: () => import("./components/buttons/ReturnBtn")
   },
   methods: {
     openDetails(param) {
@@ -44,8 +44,8 @@ export default {
     },
     closeDetails() {
       this.visible = !this.visible;
-    },
-  },
+    }
+  }
 };
 </script>
 

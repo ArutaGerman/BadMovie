@@ -1,6 +1,10 @@
 <template>
   <div class="container">
-    <div v-for="(item, index) in computedArray" :key="index" class="film-wrapper row">
+    <div
+      v-for="(item, index) in computedArray"
+      :key="index"
+      class="film-wrapper row"
+    >
       <div
         v-if="
           `http://image.tmdb.org/t/p/w500${item.poster_path}` !=
@@ -46,7 +50,7 @@ export default {
     return {};
   },
   components: {
-    DetailsBtn: () => import("./buttons/DetailsBtn"),
+    DetailsBtn: () => import("./buttons/DetailsBtn")
   },
   filters: {
     //Обрезает текст и добавляет многоточие в конце в зависимости от разрешения
@@ -64,14 +68,14 @@ export default {
       } else {
         return text;
       }
-    },
+    }
   },
   methods: {
     //Передаем индекс выбранного фильма при нажатии на DetailsBtn
     showMe(index) {
       this.$emit("select-film", index);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -94,7 +98,7 @@ export default {
     }
 
     img {
-      height: 100%
+      height: 100%;
     }
   }
 

@@ -61,8 +61,8 @@ export default {
       } else {
         return text;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,9 +1,10 @@
 <template>
   <div class="container search">
-    <span class="search-description">Выберите тип фильма, потом год премьеры</span>
+    <span class="search-description"
+      >Выберите тип фильма, потом год премьеры</span
+    >
     <div class="row search-row">
-      <div>
-         </div>
+      <div></div>
       <div
         v-for="(item, idx) in genre"
         :key="idx"
@@ -50,14 +51,14 @@ export default {
         {
           genreType: "movie",
           inputName: "film",
-          value: "Кино",
+          value: "Кино"
         },
         {
           genreType: "tv",
           inputName: "film",
-          value: "Сериал",
-        },
-      ],
+          value: "Сериал"
+        }
+      ]
     };
   },
   mounted() {
@@ -68,7 +69,7 @@ export default {
       this.$emit("ready-state", {
         picked: this.picked,
         date: this.date,
-        currentYear: this.currentYear,
+        currentYear: this.currentYear
       });
     }
   },
@@ -79,54 +80,53 @@ export default {
         this.$emit("select-changed", {
           picked: this.picked,
           date: this.date,
-          currentYear: this.currentYear,
+          currentYear: this.currentYear
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 @import "../assets/css/_mixins_style";
-.search{
+.search {
   text-align: center;
-  &-description{
+  &-description {
     font-size: 0.75rem;
-    @include resolve(md){
+    @include resolve(md) {
       font-size: 1rem;
     }
   }
 
-&-row {
-  font-size: 1.25rem;
-  padding: 0.5rem 0 0 0;
-  @include resolve(md){
-  padding: 1.5rem 0;
-  }
+  &-row {
+    font-size: 1.25rem;
+    padding: 0.5rem 0 0 0;
+    @include resolve(md) {
+      padding: 1.5rem 0;
+    }
 
-  .search-date_inner {
-  label{
-    padding-right: 0.25rem;
-    @include resolve(md){
-      padding-right: 0.5rem
+    .search-date_inner {
+      label {
+        padding-right: 0.25rem;
+        @include resolve(md) {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+    .search-params {
+      @include resolve(md) {
+        margin-top: 1rem;
+      }
+
+      > label {
+        padding-left: 0.25rem;
+        @include resolve(md) {
+          padding-left: 1rem;
+        }
+      }
     }
   }
-  }
-  .search-params {
-    @include resolve(md){
-    margin-top: 1rem;
-    }
-  
-  > label {
-    padding-left: 0.25rem;
-    @include resolve(md){
-      padding-left: 1rem;
-    }
-    
-  }
-  }
-}
 }
 </style>

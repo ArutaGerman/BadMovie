@@ -18,17 +18,17 @@ export default {
     return {
       id: null,
       films: [],
-      picked: null,
+      picked: null
     };
   },
   components: {
     Search: () => import("./Search"),
-    FilmList: () => import("./FilmList"),
+    FilmList: () => import("./FilmList")
   },
   computed: {
     //Преобразуем полученные данные от API
     computedArray: function() {
-      const changeKey = (array) => {
+      const changeKey = array => {
         //Оставляем только 10 фильмов/сериалов, т.к. сервис - топ 10
         array = array.splice(0, 10);
         for (let key of array) {
@@ -52,7 +52,7 @@ export default {
         return this.films;
       };
       return changeKey(this.films);
-    },
+    }
   },
   methods: {
     takeId(index) {
@@ -64,10 +64,10 @@ export default {
       this.$emit("show-choosen", {
         id: this.id,
         picked: this.picked,
-        image: this.films[index].poster_path,
+        image: this.films[index].poster_path
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

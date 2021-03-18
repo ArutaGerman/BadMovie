@@ -74,7 +74,11 @@
             </v-slide-item>
           </v-slide-group>
           <v-expand-transition>
-            <v-sheet v-if="model != null" class="container zoom__container" tile>
+            <v-sheet
+              v-if="model != null"
+              class="container zoom__container"
+              tile
+            >
               <v-row class="fill-height zoom__row">
                 <img
                   :src="`http://image.tmdb.org/t/p/w500${filmDataImg[model]}`"
@@ -104,7 +108,7 @@ export default {
       urlFilmData: null,
       urlCrewData: null,
       urlImages: null,
-      model: null,
+      model: null
     };
   },
 
@@ -116,13 +120,13 @@ export default {
 
     //получаем данные фильмов
     fetch(this.urlFilmData)
-      .then((response) => response.json())
-      .then((answer) => {
+      .then(response => response.json())
+      .then(answer => {
         this.filmData = { ...answer };
         //меняем имена ключей названия и даты релиза у сериалов на имена ключей фильмов, т.к. они отличаются,
         //чтобы не было в шаблоне if-else конструкции
         //delete object.original_name - удаляем измененные ключи
-        const changeKey = (object) => {
+        const changeKey = object => {
           if ("first_air_date" in object) {
             object.release_date = object.first_air_date;
             if (object.name === null) {
@@ -140,8 +144,8 @@ export default {
 
     //запрос данных создателей и актеров
     fetch(this.urlCrewData)
-      .then((response) => response.json())
-      .then((answer) => {
+      .then(response => response.json())
+      .then(answer => {
         // this.filmDataCrew.push(answer.сast);
         this.filmDataCrew.push(...answer.crew);
         this.filmDataCast.push(...answer.cast);
@@ -153,15 +157,15 @@ export default {
 
     //запрос картинок для слайдера
     fetch(this.urlImages)
-      .then((response) => response.json())
-      .then((answer) => {
+      .then(response => response.json())
+      .then(answer => {
         for (let i in answer) {
           for (let j in answer[i]) {
             this.filmDataImg.push(answer[i][j].file_path);
           }
         }
       });
-  },
+  }
 };
 </script>
 
@@ -201,15 +205,14 @@ export default {
   }
 
   > .zoom__container {
-    
-     .zoom__row {
+    .zoom__row {
       height: 320px;
       @include resolve(md) {
         height: 500px;
       }
       justify-content: center;
       padding: 12px 15px;
-      
+
       .zoom__img {
         height: 100%;
       }
